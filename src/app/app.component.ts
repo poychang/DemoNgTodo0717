@@ -8,7 +8,7 @@ import {Component} from '@angular/core';
 export class AppComponent {
   inputHint = 'What needs to be done?';
   todos: any[] = [];
-  todo: string;
+  todo: any;
 
   /** 不內含轉換的寫法，直接傳入 event 事件
    * 樣版用法 (keyup.enter)="addTodo($event)"
@@ -16,7 +16,7 @@ export class AppComponent {
   addTodo($event: Event) {
     const target = <HTMLInputElement>$event.target;
     console.log(target.value);
-    this.todos.push(this.todo);
+    this.todos.push({value: this.todo, done: false});
     this.todo = '';
   }
 
@@ -26,7 +26,7 @@ export class AppComponent {
    */
   addTodo2(target: HTMLInputElement) {
     console.log(target.value);
-    this.todos.push(this.todo);
+    this.todos.push({value: this.todo, done: false});
     this.todo = '';
   }
 }
