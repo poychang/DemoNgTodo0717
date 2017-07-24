@@ -14,6 +14,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {}
 
   clearCompletedFromFooter() {
-    this.clearCompleted.emit();
+    this.todos = this.todos.filter(item => !item.done);
+    this.clearCompleted.emit(this.todos);
   }
 }
