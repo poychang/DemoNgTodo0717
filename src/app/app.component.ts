@@ -29,4 +29,8 @@ export class AppComponent {
     this.todos.push({value: this.todo, done: false});
     this.todo = '';
   }
+
+  clearCompleted() {
+    this.todos = this.todos.filter(item => !item.done);
+  }
 }

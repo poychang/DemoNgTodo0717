@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +7,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   @Input() todos: any[];
+  @Output() clearCompleted = new EventEmitter();
+
   constructor() {}
 
   ngOnInit() {}
+
+  clearCompletedFromFooter() {
+    this.clearCompleted.emit();
+  }
 }
