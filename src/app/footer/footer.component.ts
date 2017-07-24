@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {MyFilterPipe} from 'app/pipes/my-filter.pipe';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +9,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class FooterComponent implements OnInit {
   @Input() todos: any[];
   @Output() clearCompleted = new EventEmitter();
+  @Output() selectType = new EventEmitter();
+  selectedType = 'all';
 
   constructor() {}
 
@@ -16,5 +19,10 @@ export class FooterComponent implements OnInit {
   clearCompletedFromFooter() {
     this.todos = this.todos.filter(item => !item.done);
     this.clearCompleted.emit(this.todos);
+  }
+
+  selectTypeFromFooter(type) {
+    this.selectedType = type;
+    this.selectType.emit(type);
   }
 }

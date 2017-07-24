@@ -9,6 +9,7 @@ export class AppComponent {
   inputHint = 'What needs to be done?';
   todos: any[] = [];
   todo: any;
+  type = 'all';
 
   /** 不內含轉換的寫法，直接傳入 event 事件
    * 樣版用法 (keyup.enter)="addTodo($event)"
@@ -33,5 +34,10 @@ export class AppComponent {
   clearCompleted($event) {
     console.log('clearCompleted', $event);
     this.todos = $event;
+  }
+
+  selectType($event) {
+    console.log('selectType', $event);
+    this.type = $event;
   }
 }
